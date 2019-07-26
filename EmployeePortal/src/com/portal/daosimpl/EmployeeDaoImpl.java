@@ -39,21 +39,44 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	@Override
-	public boolean validate(int empid, String password) {
+	public Employee validate(int empid, String password) {
+		
+		System.out.println("I m validate");
 		try (Connection conn=ConnectionProvider.getDBConnection();){
-		PreparedStatement ps=conn.prepareStatement("select * from LoginTab where EId=? and Password=?");
+		PreparedStatement ps=conn.prepareStatement("select EId,EName,Gender,Qualification,ContactNo,Email,Role from EmployeeTab join LoginTab using(EId) where EId=? and Password=?");
 		ps.setInt(1,empid);
 		ps.setString(2,password);
 		ResultSet rs=ps.executeQuery();
 		if(rs.next()){
-			return true;
+			System.out.println("I m in if : "+rs.getString(2));
+			
+			//if user is valid
+			String name=rs.getString(2);
+			String gender=rs.getString(3);
+			String q=rs.getString(4);
+			String contactNo=rs.getString(5);
+			String email=rs.getString(6);
+			String role=rs.getString(7);
+			
+			Employee emp=new Employee();
+			emp.setEmployeeId(empid);
+			emp.setEmployeeName(name);
+			emp.setGender(gender);
+			emp.setEmailAddress(email);
+			emp.setQualification(q);
+			emp.setContactNo(contactNo);
+			emp.setRole(role);
+			
+			return emp;
+			
+			
 		}
 			
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	@Override
