@@ -1,5 +1,12 @@
 <jsp:include page="Header.jsp"/>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+	<h4 style="color:red">
+		<c:if test="${msg ne null}">
+			${msg}
+		</c:if>
+	</h4>
 	<fieldset>
 		<legend>Login Form</legend>
 		<form action="validate" method="post">	

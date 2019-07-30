@@ -1,15 +1,15 @@
 <jsp:include page="Header.jsp"/>
 
-	<h3>Welcome <%=session.getAttribute("userName") %></h3>
+	<h3>Welcome ${sessionScope.userObj.employeeName}</h3>
 	
 	<br/>
 	
 	<table>
 		<tr>
-			<td>1. Register a New Employee</td>
+			<td><a href="RegistrationForm.jsp">1. Register a New Employee</a></td>
 		</tr>
 		<tr>
-			<td>2. View All Employees</td>
+			<td><a href="viewAllEmployees">2. View All Employees</a></td>
 		</tr>
 		<tr>
 			<td>3. Search Employee By Id</td>

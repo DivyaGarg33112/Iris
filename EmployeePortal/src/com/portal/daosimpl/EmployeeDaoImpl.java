@@ -3,6 +3,7 @@ package com.portal.daosimpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.portal.daos.EmployeeDao;
@@ -99,8 +100,55 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public List<Employee> getAllEmployee() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Employee> eList=new ArrayList<>();
+		
+		try (Connection conn=ConnectionProvider.getDBConnection();){
+			PreparedStatement ps=conn.prepareStatement("select EId,EName,Gender,Qualification,ContactNo,Email,Role from EmployeeTab join LoginTab using(EId)");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()){
+				
+				//if user is valid
+				String name=rs.getString(2);
+				String gender=rs.getString(3);
+				String q=rs.getString(4);
+				String contactNo=rs.getString(5);
+				String email=rs.getString(6);
+				String role=rs.getString(7);
+				
+				Employee emp=new Employee();
+				emp.setEmployeeId(rs.getInt(1));
+				emp.setEmployeeName(name);
+				emp.setGender(gender);
+				emp.setEmailAddress(email);
+				emp.setQualification(q);
+				emp.setContactNo(contactNo);
+				emp.setRole(role);
+				
+				eList.add(emp);
+				
+				
+				
+			}
+				
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return eList;
+
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
