@@ -15,7 +15,7 @@
 			<td>3. Add your Address</td>
 		</tr>
 		<tr>
-			<td>3. Change Password</td>
+			<td><a href="ChangePass.jsp">4. Change Password</a></td>
 		</tr>
 		
 	</table>
