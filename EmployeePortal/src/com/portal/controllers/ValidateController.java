@@ -18,6 +18,10 @@ import com.portal.entities.Employee;
 public class ValidateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request,response);
+	}
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Has taken the request
@@ -34,6 +38,8 @@ public class ValidateController extends HttpServlet {
 		if(r!=null){
 			HttpSession session=request.getSession();
 			session.setAttribute("userObj",r);
+			
+			daoObj.updateEmployee(r);
 			
 			if(r.getRole().equals("Admin")){
 				RequestDispatcher rd=request.getRequestDispatcher("AdminSuccess.jsp");

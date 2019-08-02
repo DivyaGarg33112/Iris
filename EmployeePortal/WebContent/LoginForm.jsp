@@ -1,3 +1,4 @@
+<%@page session="false" %>
 <jsp:include page="Header.jsp"/>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

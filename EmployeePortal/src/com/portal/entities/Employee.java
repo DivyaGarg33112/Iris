@@ -1,10 +1,13 @@
 package com.portal.entities;
 
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
 import com.portal.daos.EmployeeDao;
 import com.portal.daosimpl.EmployeeDaoImpl;
 
 //POJO
-public class Employee {
+public class Employee implements HttpSessionBindingListener{
 	
 	private int employeeId;
 	private String employeeName;
@@ -62,6 +65,27 @@ public class Employee {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	/*This method will be called when an object of Employee is added
+	 * to the session*/
+	@Override
+	public void valueBound(HttpSessionBindingEvent e) {
+		Employee emp=(Employee)e.getValue();
+		String cNo=emp.getContactNo();
+		if(!cNo.startsWith("+91")){
+			emp.setContactNo("+91"+cNo);
+		}
+		
+	}
+	
+	/*This method will be called when an object of Employee is remove
+	 * from the session either by calling session.removeAttribute() or 
+	 * by calling session.invalidate() or session has been time out*/
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

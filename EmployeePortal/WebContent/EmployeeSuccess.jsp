@@ -1,8 +1,11 @@
+<%@page import="com.portal.listeners.SessionCounterListener"%>
 <jsp:include page="Header.jsp"/>
 
 	<h3>Welcome ${userObj.employeeName}</h3>
 	
 	<br/>
+	
+	<h3>No of Logged In User :  <%=SessionCounterListener.getActiveSessions() %> </h3>
 	
 	<table>
 		<tr>
@@ -16,6 +19,9 @@
 		</tr>
 		<tr>
 			<td><a href="ChangePass.jsp">4. Change Password</a></td>
+		</tr>
+		<tr>
+			<td><a href="logOut">5. LogOut</a></td>
 		</tr>
 		
 	</table>
