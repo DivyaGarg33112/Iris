@@ -38,6 +38,7 @@ public class Person {
     protected int age;
     protected int id;
     protected String name;
+    
 
     /**
      * Gets the value of the age property.
