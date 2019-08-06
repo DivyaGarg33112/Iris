@@ -14,8 +14,8 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">create</property>
         
-        <mapping class="com.iris.models.Person"/>
-        <mapping class="com.iris.models.Customer"/>
+        <mapping class="com.examples.models.User"/>
+        <mapping class="com.examples.models.Vehicle"/>
         
     </session-factory>
 </hibernate-configuration>
