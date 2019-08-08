@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+  <bean id="emp1" class="ex3.Employee" scope="prototype">
+  	<property name="employeeId" value="101"/>
+  	<property name="employeeName" value="Abhishek"/>
+  </bean>  
+ 
+ <bean id="emp2" class="ex3.Employee">
+  	<property name="employeeId" value="102"/>
+  	<property name="employeeName" value="Anurag"/>
+  </bean>  
+  
+  <bean id="emp3" class="ex3.Employee">
+  	<property name="employeeId" value="103"/>
+  	<property name="employeeName" value="Avishake"/>
+  </bean>  
+   
+   <bean id="dept" class="ex3.Department">
+  		<constructor-arg value="IT" />
+  		<constructor-arg value="Information Technology"/>
+  		<constructor-arg>	
+  			<set>
+  				<ref bean="emp1"/>
+  				<ref bean="emp2"/>
+  				<ref bean="emp3"/>
+  			</set>
+  		</constructor-arg>
+  </bean>  
+   
+   
+</beans>
+
+
+

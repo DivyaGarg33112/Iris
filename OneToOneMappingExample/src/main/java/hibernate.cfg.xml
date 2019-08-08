@@ -12,10 +12,19 @@
         <property name="dialect">org.hibernate.dialect.OracleDialect</property>
         
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         
-        <mapping class="com.examples.models.User"/>
+        <!-- <mapping class="com.examples.models.User"/>
         <mapping class="com.examples.models.Vehicle"/>
+       	<mapping class="com.examples.models.Employee"/>
+        <mapping class="com.examples.models.Department"/>
+        <mapping class="com.examples.models.Student"/>
+        <mapping class="com.examples.models.Course"/>
+         -->
+         
+         <mapping class="tableperclass.Employee"/>
+        <mapping class="tableperclass.PermanentEmployee"/>
+        <mapping class="tableperclass.ContractualEmployee"/>
         
     </session-factory>
 </hibernate-configuration>

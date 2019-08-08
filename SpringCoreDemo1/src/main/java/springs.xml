@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   <bean id="lapObj1" class="com.examples.SpringCoreDemo1.Laptop">
+   		<property name="brand" value="HP"/>
+   		<property name="cost" value="55000"/>
+   		<property name="ram" value="8"/>
+   </bean>
+   
+ 
+   <bean id="lapObj2" class="com.examples.SpringCoreDemo1.Laptop">
+   		<constructor-arg value="8" index="1"/>
+   		<constructor-arg value="Dell" index="0"/>
+   		<constructor-arg value="50000" index="2"/>
+   </bean>
+   
+   <import resource="ex2/ex2.xml"/>
+   <import resource="ex3/ex3.xml"/>
+   <import resource="ex4/AutowiringByName.xml"/>
+   
+</beans>
