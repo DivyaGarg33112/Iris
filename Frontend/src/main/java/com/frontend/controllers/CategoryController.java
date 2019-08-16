@@ -2,9 +2,12 @@ package com.frontend.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +40,14 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value="/submitCategory",method=RequestMethod.POST)
-	public String addCategory(@ModelAttribute Category cObj,ModelMap map){
+	public String addCategory(@ModelAttribute @Valid Category cObj,ModelMap map,
+			BindingResult result){
+		System.out.println("I m here");
+		if(result.hasErrors()){
+			System.out.println("I m in if having errors.");
+			return "CategoryForm";
+			
+		}
 		if(cObj.getCategoryId()==0){
 			categoryDao.addCategory(cObj);
 			map.addAttribute("msg","Category Added Succesfully");
